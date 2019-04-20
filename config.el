@@ -1,12 +1,6 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here
-(when (eq system-type 'windows-nt)
-  (define-coding-system-alias 'cp65001 'utf-8))
-
-(when IS-WINDOWS
-  (setq doom-one-brighter-comments t)
-  (setq doom-one-comment-bg nil))
 
 ;; Highlight trailing whitespace
 (setq-default show-trailing-whitespace t)
@@ -34,3 +28,6 @@
 
 ;; モジュールの設定
 ;(after! モジュール名)
+
+(when (eq system-type 'windows-nt)
+  (load! "+windows"))

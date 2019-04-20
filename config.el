@@ -14,20 +14,22 @@
 ;; 右端で折り返す
 (setq-default truncate-lines nil)
 
-;; キーバインドの設定
-(map!
- :n "x" #'delete-char  ; 文字を削除するとき yank しない
- :i "C-h" "<DEL>"
- (:when IS-MAC
-   :nvi "s-1" #'treemacs
-   :nvi "s-v" #'clipboard-yank))
-
-;; ミニバッファで C-w で単語区切りで削除
-(map! :map minibuffer-local-completion-map
-      "C-w" #'backward-kill-word)
-
 ;; モジュールの設定
-;(after! モジュール名)
+(after! evil
+  ;; Modes that don't use evil
+  (setq evil-emacs-state-modes (append evil-emacs-state-modes
+                                       '(eshell-mode)))
+  ;; j,k で物理行移動, gj,gk で論理行移動
+  (defun evil-swap-key (map key1 key2)
+    "MAP中のKEY1とKEY2を入れ替え"
+    (let ((def1 (lookup-key map key1))
+          (def2 (lookup-key map key2)))
+      (define-key map key1 def2)
+      (define-key map key2 def1)))
+  (evil-swap-key evil-motion-state-map "j" "gj")
+  (evil-swap-key evil-motion-state-map "k" "gk"))
 
+;; load additional settings
 (when (eq system-type 'windows-nt)
   (load! "+windows"))
+(load! "+bindings")

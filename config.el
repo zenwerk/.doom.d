@@ -4,7 +4,9 @@
 (when (eq system-type 'windows-nt)
   (define-coding-system-alias 'cp65001 'utf-8))
 
-(setq doom-one-brighter-comments t)
+(when IS-WINDOWS
+  (setq doom-one-brighter-comments t)
+  (setq doom-one-comment-bg nil))
 
 ;; Highlight trailing whitespace
 (setq-default show-trailing-whitespace t)
@@ -27,7 +29,7 @@
    :nvi "s-v" #'clipboard-yank))
 
 ;; ミニバッファで C-w で単語区切りで削除
-(map! :map :minibuffer-local-completion-map
+(map! :map minibuffer-local-completion-map
       "C-w" #'backward-kill-word)
 
 ;; モジュールの設定

@@ -167,15 +167,16 @@
        )
 
 
-;; NTEmacs 向けの exec-path 対応 (動いてないようだ)
-;(when (eq system-name 'windows-nt)
-;  (let (home (getenv "HOME"))
-;    (setq exec-path
-;          (list "C:/Windows/System32"
-;                "C:/Windows/System32/OpenSSH"
-;                (concat home "/bin")
-;                (concat home "/scoop/shims")
-;                (concat home "/scoop/apps/llvm/current/bin")
-;                (concat home "/scoop/apps/gcc/current/bin")
-;                (concat home "/scoop/apps/python/current/scripts"))))
-;  (setenv "PATH" (string-join exec-path ":")))
+;; NTEmacs 向けの exec-path 対応
+(when (eq system-type 'windows-nt)
+  (let ((home (getenv "HOME")))
+    (setq exec-path
+          (list "C:\\Windows\\System32"
+                "C:\\Windows\\System32\\OpenSSH"
+                (concat home "\\bin")
+                (concat home "\\scoop\\shims")
+                (concat home "\\scoop\\apps\\llvm\\current\\bin")
+                (concat home "\\scoop\\apps\\gcc\\current\\bin")
+                (concat home "\\scoop\\apps\\python\\current\\scripts"))))
+    (setenv "PATH" (string-join exec-path ":"))
+    (message "Update exec-path and PATH at init.el for windows-nt"))

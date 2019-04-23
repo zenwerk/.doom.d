@@ -16,4 +16,4 @@
   :hook (after-init . hydra-posframe-enable))
 
 (def-package! flymake-posframe
-  :hook (flymake-mode . hydra-posframe-enable))
+  :hook (flymake-mode . flymake-posframe-mode))

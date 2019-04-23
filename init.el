@@ -163,7 +163,7 @@
 
        ;; My Private modules
        :private
-       ivy
+       posframe
        )
 
 

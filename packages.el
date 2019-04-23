@@ -7,3 +7,7 @@
 ;; (package! builtin-package :disable t)
 
 (package! evil-nerd-commenter)
+
+;; kaolin-themes を使う
+;; (package! doom-themes :disable t)
+(package! kaolin-themes :recipe (:fetcher github :repo "zenwerk/emacs-kaolin-themes"))

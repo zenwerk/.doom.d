@@ -4,6 +4,10 @@
 (setq doom-one-brighter-comments t) ; コメントの文字色を明るくする
 (setq doom-one-comment-bg nil) ; コメント行の背景色を明るくしない
 
+;; 左 Win キーを Super モディファイアキーに
+(setq w32-pass-lwindow-to-system nil)
+(setq w32-lwindow-modifier 'super)
+
 ;; For Windows encoding
 (define-coding-system-alias 'cp65001 'utf-8)
 

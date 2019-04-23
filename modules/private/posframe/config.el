@@ -11,3 +11,9 @@
   :config
   (setq ivy-display-function #'ivy-posframe-display-at-frame-center)
   (ivy-posframe-enable))
+
+(def-package! hydra-posframe
+  :hook (after-init . hydra-posframe-enable))
+
+(def-package! flymake-posframe
+  :hook (flymake-mode . hydra-posframe-enable))

@@ -13,6 +13,13 @@
 
 ;; 右端で折り返す
 (setq-default truncate-lines nil)
+(global-visual-line-mode t)
+
+;; my fork of koalin-themes
+(def-package! kaolin-themes
+  :config
+  (load-theme 'kaolin-dark t)
+  (kaolin-treemacs-theme))
 
 ;; モジュールの設定
 (after! evil
@@ -28,6 +35,14 @@
       (define-key map key2 def1)))
   (evil-swap-key evil-motion-state-map "j" "gj")
   (evil-swap-key evil-motion-state-map "k" "gk"))
+
+(after! company
+  (setq company-idle-delay 0.1
+        company-minimum-prefix-length 2
+        company-show-numbers nil
+        ;; company-dabbrev-downcase nil
+        ;; company-dabbrev-ignore-case t
+        ))
 
 ;; load additional settings
 (when (eq system-type 'windows-nt)

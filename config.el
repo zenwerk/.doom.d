@@ -18,7 +18,7 @@
 ;; my fork of koalin-themes
 (def-package! kaolin-themes
   :config
-  (load-theme 'kaolin-dark t)
+  (load-theme 'kaolin-ocean t)
   (kaolin-treemacs-theme))
 
 ;; モジュールの設定

@@ -6,6 +6,8 @@
 ;; (package! another-package :recipe (:fetcher github :repo "username/repo"))
 ;; (package! builtin-package :disable t)
 
+(disable-packages! anaconda-mode company-irony company-irony-c-headers flycheck-irony irony irony-eldoc ivy-rtags rtags)
+
 (package! evil-nerd-commenter)
 
 ;; kaolin-themes を使う

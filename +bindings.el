@@ -5,8 +5,11 @@
  :n "x" #'delete-char  ; 文字を削除するとき yank しない
  :i "C-h" "<DEL>"
  (:when IS-MAC
-   :nvi "s-1" #'treemacs
-   :nvi "s-v" #'clipboard-yank))
+   :nvi "s-1" #'+treemacs/toggle
+   :map treemacs-mode-map "s-1" #'+treemacs/toggle
+   :nvi "s-v" #'yank-pop
+   :nvi "s-b" #'+lookup/definition
+   :nvi "s-o" #'imenu-anywhere))
 
 ;; ミニバッファで C-w で単語区切りで削除
 (map! :map minibuffer-local-completion-map

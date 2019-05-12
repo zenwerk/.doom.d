@@ -4,9 +4,13 @@
 (setq doom-one-brighter-comments t) ; コメントの文字色を明るくする
 (setq doom-one-comment-bg nil) ; コメント行の背景色を明るくしない
 
-;; 左 Win キーを Super モディファイアキーに
-(setq w32-pass-lwindow-to-system nil)
-(setq w32-lwindow-modifier 'super)
+;; Win キーを Super モディファイアキーに
+(setq w32-pass-lwindow-to-system nil
+      w32-pass-rwindow-to-system nil
+      w32-pass-apps-to-system nil
+      w32-lwindow-modifier 'super
+      w32-rwindow-modifier 'super
+      w32-apps-modifier 'hyper)
 
 ;; For Windows encoding
 (define-coding-system-alias 'cp65001 'utf-8)
@@ -40,3 +44,4 @@
                                    (deactivate-input-method)
                                    (apply orig-fun args))))
     ))
+(message "loaded Windows specific configulation.")

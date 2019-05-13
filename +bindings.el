@@ -4,9 +4,12 @@
 (map!
  :n "x" #'delete-char  ; 文字を削除するとき yank しない
  :i "C-h" "<DEL>"
+ :g "C-<" #'jumplist-previous
+ :g "C->" #'jumplist-next
+ (:when IS-MAC
+   :map treemacs-mode-map "s-1" #'+treemacs/toggle)
  (:when IS-MAC
    :nvi "s-1" #'+treemacs/toggle
-   :map treemacs-mode-map "s-1" #'+treemacs/toggle
    :nvi "s-v" #'yank-pop
    :nvi "s-b" #'+lookup/definition
    :nvi "s-o" #'imenu-anywhere))

@@ -10,6 +10,12 @@
 
 (package! evil-nerd-commenter)
 
+(package! beacon)
+
+(package! jumplist)
+
+(package! company-flx)
+
 ;; kaolin-themes を使う
 ;; (package! doom-themes :disable t)
 (package! kaolin-themes :recipe (:fetcher github :repo "zenwerk/emacs-kaolin-themes" :files ("*" "themes/*")))

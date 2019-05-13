@@ -169,6 +169,7 @@
        my-cc
        )
 
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 ;; NTEmacs 向けの exec-path 対応
 (when (eq system-type 'windows-nt)

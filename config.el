@@ -42,7 +42,25 @@
         company-show-numbers nil
         ;; company-dabbrev-downcase nil
         ;; company-dabbrev-ignore-case t
-        ))
+        )
+  ; fuzzy matching for company
+  (company-flx-mode +1))
+
+(def-package! beacon
+  :custom
+  (beacon-color "#009933")
+  :hook (after-init . beacon-mode))
+
+(def-package! jumplist
+  :config
+  (custom-set-variables
+   '(jumplist-hook-commands
+     '(find-file
+       isearch-forward
+       +lookup/definition
+       end-of-buffer
+       beginning-of-buffer))
+   '(jumplist-ex-mode t)))
 
 ;; load windows settings
 (defun wslp ()

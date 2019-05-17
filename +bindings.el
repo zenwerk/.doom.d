@@ -6,12 +6,13 @@
  :i "C-h" "<DEL>"
  :g "C-<" #'jumplist-previous
  :g "C->" #'jumplist-next
- (:when IS-MAC
+ (:when (or IS-MAC (wslp))
    :map treemacs-mode-map "s-1" #'+treemacs/toggle)
- (:when IS-MAC
+ (:when (or IS-MAC (wslp))
    :nvi "s-1" #'+treemacs/toggle
    :nvi "s-v" #'yank-pop
    :nvi "s-b" #'+lookup/definition
+   :nvi "s-/" #'evilnc-comment-or-uncomment-lines
    :nvi "s-o" #'imenu-anywhere))
 
 ;; ミニバッファで C-w で単語区切りで削除
@@ -19,7 +20,7 @@
       "C-w" #'backward-kill-word)
 
 (map!
- :nvi "s-/"   #'evilnc-comment-or-uncomment-lines
+ :nvi "C-c /" #'evilnc-comment-or-uncomment-lines
  :nvi "C-c l" #'evilnc-quick-comment-or-uncomment-to-the-line
  :nvi "C-c c" #'evilnc-copy-and-comment-lines
  :nvi "C-c p" #'evilnc-comment-or-uncomment-paragraphs

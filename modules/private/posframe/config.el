@@ -12,11 +12,11 @@
   (ivy-posframe-parameters
    '((left-fringe . 5)
      (right-fringe . 5)))
-  (ivy-posframe-border-width 7)
+  (ivy-posframe-border-width 2) ; mac では反映されない
   :custom-face
   (ivy-posframe ((t (:background "#282a36"))))
-  ;; (ivy-posframe-border ((t (:background "#6272a4"))))
-  ;; (ivy-posframe-cursor ((t (:background "#61bfff"))))
+  (ivy-posframe-border ((t (:background "#6272a4")))) ; mac では反映されない
+  (ivy-posframe-cursor ((t (:background "#61bfff")))) ; mac では反映されない
   :config
   (setq ivy-display-function #'ivy-posframe-display-at-frame-center)
   (ivy-posframe-enable)

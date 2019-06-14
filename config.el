@@ -1,6 +1,7 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here
+(setq doom-scratch-buffer-major-mode 'lisp-interaction-mode)
 
 ;; Highlight trailing whitespace
 (setq-default show-trailing-whitespace t)
@@ -61,6 +62,16 @@
        end-of-buffer
        beginning-of-buffer))
    '(jumplist-ex-mode t)))
+
+(def-package! iflipb
+  :custom
+  (iflipb-wrap-around t)
+  (iflipb-ignore-buffers
+   '("*Messages*"
+     "Help*"
+     "*doom*"
+     "*new*"
+     "*swiper*")))
 
 ;; load windows settings
 (defun wslp ()

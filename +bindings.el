@@ -19,9 +19,13 @@
 (map! :map minibuffer-local-completion-map
       "C-w" #'backward-kill-word)
 
+;; iflipb でバッファの切り替え
+(map! :nmvoig [C-tab] #'iflipb-next-buffer
+      :nmvoig [C-S-tab] #'iflipb-previous-buffer)
+
+
 (map!
  :nvi "C-c /" #'evilnc-comment-or-uncomment-lines
  :nvi "C-c l" #'evilnc-quick-comment-or-uncomment-to-the-line
  :nvi "C-c c" #'evilnc-copy-and-comment-lines
- :nvi "C-c p" #'evilnc-comment-or-uncomment-paragraphs
- )
+ :nvi "C-c p" #'evilnc-comment-or-uncomment-paragraphs)

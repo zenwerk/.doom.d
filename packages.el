@@ -20,4 +20,5 @@
 ;; (package! doom-themes :disable t)
 (package! kaolin-themes :recipe (:fetcher github :repo "zenwerk/emacs-kaolin-themes" :files ("*" "themes/*")))
 
-(package! iflipb :recipe (:fetcher github :repo "jrosdahl/iflipb"))
+;; (package! iflipb :recipe (:fetcher github :repo "jrosdahl/iflipb"))
+(package! awesome-tab :recipe (:fetcher github :repo "manateelazycat/awesome-tab"))

@@ -25,8 +25,9 @@
 ;; モジュールの設定
 (after! evil
   ;; Modes that don't use evil
-  (setq evil-emacs-state-modes (append evil-emacs-state-modes
-                                       '(eshell-mode)))
+  ;; (dolist (mode '(eshell-mode))
+  ;;   (add-to-list 'evil-emacs-state-modes mode))
+  (evil-set-initial-state 'eshell-mode 'emacs)
   ;; j,k で物理行移動, gj,gk で論理行移動
   (defun evil-swap-key (map key1 key2)
     "MAP中のKEY1とKEY2を入れ替え"
@@ -63,15 +64,39 @@
        beginning-of-buffer))
    '(jumplist-ex-mode t)))
 
-(def-package! iflipb
-  :custom
-  (iflipb-wrap-around t)
-  (iflipb-ignore-buffers
-   '("*Messages*"
-     "Help*"
-     "*doom*"
-     "*new*"
-     "*swiper*")))
+;; (def-package! iflipb
+;;   :custom
+;;   (iflipb-wrap-around t)
+;;   (iflipb-ignore-buffers
+;;    '("*Messages*"
+;;      "Help*"
+;;      "*doom*"
+;;      "*new*"
+;;      "*swiper*")))
+
+(defun my-awesome-tab-hide-tab (x)
+  (let ((name (format "%s" x)))
+    (or
+     ;; Current window is not dedicated window.
+     (window-dedicated-p (selected-window))
+
+     ;; Buffer name not match below blacklist.
+     (string-prefix-p "*epc" name)
+     (string-prefix-p "*helm" name)
+     (string-prefix-p "*Compile-Log*" name)
+     (string-prefix-p "*lsp" name)
+     (string-prefix-p "*doom*" name)
+     (string-prefix-p "*Messages*" name)
+
+     ;; Is not magit buffer.
+     (and (string-prefix-p "magit" name)
+          (not (file-name-extension name)))
+     )))
+
+(def-package! awesome-tab
+  :config
+  (setq awesome-tab-hide-tab-function 'my-awesome-tab-hide-tab)
+  (awesome-tab-mode t))
 
 ;; load windows settings
 (defun wslp ()

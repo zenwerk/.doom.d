@@ -19,7 +19,7 @@
   (ivy-posframe-border ((t (:background "#6272a4")))) ; mac では反映されない
   (ivy-posframe-cursor ((t (:background "#61bfff")))) ; mac では反映されない
   :config
-  (ivy-posframe-enable))
+  (ivy-posframe-mode 1))
 
 (def-package! hydra-posframe
   :config

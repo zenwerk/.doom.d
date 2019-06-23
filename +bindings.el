@@ -10,6 +10,7 @@
  :i "C-h" "<DEL>"
  :g "C-<" #'jumplist-previous
  :g "C->" #'jumplist-next
+ :g [M-f7] #'+lookup/references
  (:when (or IS-MAC (wslp))
    :map treemacs-mode-map "s-1" #'+treemacs/toggle)
  (:when (or IS-MAC (wslp))
@@ -32,6 +33,7 @@
 ;; (map! :nmvoig [C-tab] #'iflipb-next-buffer
 ;;       :nmvoig [C-S-tab] #'iflipb-previous-buffer)
 
+;; awesome-tab
 (map! :nvig [C-tab] #'awesome-tab-forward-tab
       :nvig [C-S-tab] #'awesome-tab-backward-tab
       :nvig [M-tab] #'awesome-tab-forward-group

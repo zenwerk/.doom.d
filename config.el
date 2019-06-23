@@ -209,6 +209,10 @@
   (setq awesome-tab-hide-tab-function 'my-awesome-tab-hide-tab)
   (awesome-tab-mode t))
 
+(def-package! which-key-posframe
+  :config
+  (which-key-posframe-mode))
+
 ;; load windows settings
 (defun wslp ()
   (and (eq system-type 'gnu/linux)

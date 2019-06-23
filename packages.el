@@ -10,16 +10,17 @@
 
 (package! evil-nerd-commenter)
 
-(package! beacon)
-
-(package! jumplist)
-
 (package! company-flx)
 
-;; kaolin-themes を使う
+(package! which-key-posframe)
+
+;; buffer move
+;; (package! iflipb :recipe (:fetcher github :repo "jrosdahl/iflipb"))
+(package! awesome-tab :recipe (:fetcher github :repo "manateelazycat/awesome-tab"))
+(package! beacon)
+(package! jumplist)
+
+;; external themes
 ;; (package! doom-themes :disable t)
 (package! kaolin-themes)
 (package! base16-theme)
-
-;; (package! iflipb :recipe (:fetcher github :repo "jrosdahl/iflipb"))
-(package! awesome-tab :recipe (:fetcher github :repo "manateelazycat/awesome-tab"))

@@ -14,6 +14,8 @@
 
 (package! which-key-posframe)
 
+(package! eshell-toggle :recipe (:fetcher github :repo "4DA/eshell-toggle"))
+
 ;; buffer move
 ;; (package! iflipb :recipe (:fetcher github :repo "jrosdahl/iflipb"))
 (package! awesome-tab :recipe (:fetcher github :repo "manateelazycat/awesome-tab"))
@@ -22,5 +24,5 @@
 
 ;; external themes
 ;; (package! doom-themes :disable t)
-(package! kaolin-themes)
 (package! base16-theme)
+(package! kaolin-themes)

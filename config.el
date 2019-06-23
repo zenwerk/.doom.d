@@ -192,6 +192,7 @@
      (string-prefix-p "*Compile-Log*" name)
      (string-prefix-p "*lsp" name)
      (string-prefix-p "*doom*" name)
+     (string-prefix-p "*et:" name) ; for eshell-toggle
      ;; (string-prefix-p "*Messages*" name)
 
      ;; Buffer mode not match below blacklist.
@@ -212,6 +213,13 @@
 (def-package! which-key-posframe
   :config
   (which-key-posframe-mode))
+
+(def-package! eshell-toggle
+  :custom
+  ;; (eshell-toggle-window-side 'right)
+  (eshell-toggle-init-function #'eshell-toggle-init-ansi-term)
+  (eshell-toggle-use-projectile-root t)
+  (eshell-toggle-size-fraction 2))
 
 ;; load windows settings
 (defun wslp ()

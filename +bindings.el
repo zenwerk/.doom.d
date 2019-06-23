@@ -8,8 +8,6 @@
 (map!
  :n "x" #'delete-char  ; 文字を削除するとき yank しない
  :i "C-h" "<DEL>"
- :g "C-<" #'jumplist-previous
- :g "C->" #'jumplist-next
  :g [M-f7] #'+lookup/references
  (:when (or IS-MAC (wslp))
    :map treemacs-mode-map "s-1" #'+treemacs/toggle)
@@ -25,24 +23,32 @@
 (map! :map minibuffer-local-completion-map
       "C-w" #'backward-kill-word)
 
-(map! :map company-active-map
-      "TAB" #'company-complete-selection
-      [tab] #'company-complete-selection)
+;; (map! :map eshell-mode-map
+;;       "s-`" #'+workspace/close-window-or-workspace)
 
 ;; iflipb でバッファの切り替え
 ;; (map! :nmvoig [C-tab] #'iflipb-next-buffer
 ;;       :nmvoig [C-S-tab] #'iflipb-previous-buffer)
 
-;; awesome-tab
-(map! :nvig [C-tab] #'awesome-tab-forward-tab
-      :nvig [C-S-tab] #'awesome-tab-backward-tab
-      :nvig [M-tab] #'awesome-tab-forward-group
-      :nvig [M-S-tab] #'awesome-tab-backward-group
-      :nvig [C-S-left] #'awesome-tab-move-current-tab-to-left
-      :nvig [C-S-right] #'awesome-tab-move-current-tab-to-right)
-
 (map!
- :nvi "C-c /" #'evilnc-comment-or-uncomment-lines
- :nvi "C-c l" #'evilnc-quick-comment-or-uncomment-to-the-line
- :nvi "C-c c" #'evilnc-copy-and-comment-lines
- :nvi "C-c p" #'evilnc-comment-or-uncomment-paragraphs)
+ (:after jumplist
+   (:g "C-<" #'jumplist-previous
+       "C->" #'jumplist-next))
+ (:after evil-nerd-commenter
+   (:nvi "C-c /" #'evilnc-comment-or-uncomment-lines
+         "C-c l" #'evilnc-quick-comment-or-uncomment-to-the-line
+         "C-c c" #'evilnc-copy-and-comment-lines
+         "C-c p" #'evilnc-comment-or-uncomment-paragraphs))
+ (:after eshell-toggle
+   (:nvig "s-`" #'eshell-toggle))
+ (:after company
+   (:map company-active-map
+     "TAB" #'company-complete-selection
+     [tab] #'company-complete-selection))
+ (:after awesome-tab
+   (:nvig [C-tab] #'awesome-tab-forward-tab
+          [C-S-tab] #'awesome-tab-backward-tab
+          [M-tab] #'awesome-tab-forward-group
+          [M-S-tab] #'awesome-tab-backward-group
+          [C-S-left] #'awesome-tab-move-current-tab-to-left
+          [C-S-right] #'awesome-tab-move-current-tab-to-right)))

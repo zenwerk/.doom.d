@@ -9,6 +9,7 @@
  :n "x" #'delete-char  ; 文字を削除するとき yank しない
  :i "C-h" "<DEL>"
  :g [M-f7] #'+lookup/references
+ :nvig "C-s" #'swiper
  (:when (or IS-MAC (wslp))
    :map treemacs-mode-map "s-1" #'+treemacs/toggle)
  (:when (or IS-MAC (wslp))

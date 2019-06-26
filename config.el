@@ -53,20 +53,39 @@
   (company-flx-mode 1))
 
 
-(after! treemacs
+(after! (:and treemacs all-the-icons)
   (setq treemacs-icons-hash (make-hash-table :size 200 :test #'equal)
         treemacs-icon-fallback (format "%s " (all-the-icons-faicon "file-text-o"))
         treemacs-icon-text treemacs-icon-fallback)
+
+  ;; (setq treemacs-icon-open-png
+  ;;       (concat
+  ;;        (all-the-icons-octicon "chevron-down" :height 0.8 :v-adjust 0.1)
+  ;;        "\t"
+  ;;        (all-the-icons-octicon "file-directory" :v-adjust 0)
+  ;;        "\t")
+  ;;       treemacs-icon-closed-png
+  ;;       (concat
+  ;;        (all-the-icons-octicon "chevron-right" :height 0.8 :v-adjust 0.1 :face 'font-lock-doc-face)
+  ;;        "\t"
+  ;;        (all-the-icons-octicon "file-directory" :v-adjust 0 :face 'font-lock-doc-face)
+  ;;        "\t"))
 
   (setq treemacs-icon-root-png
         (format " %s " (all-the-icons-octicon "repo" :v-adjust -0.2 :height 1.4
                                               :face 'font-lock-variable-name-face))
 
         treemacs-icon-open-png
-        (format "%s " (all-the-icons-material "folder_open" :v-adjust -0.2 :height 1 'font-lock-doc-face))
+        (format "%s " (all-the-icons-material "folder_open"
+                                              :v-adjust -0.2
+                                              :height 1
+                                              :face 'treemacs-directory-face))
 
         treemacs-icon-closed-png
-        (format "%s " (all-the-icons-material "folder" :v-adjust -0.2 :height 1))
+        (propertize (format "%s " (all-the-icons-material "folder"
+                                                          :v-adjust -0.2
+                                                          :height 1
+                                                          :face 'treemacs-directory-face)))
 
         treemacs-icon-tag-open-png
         (all-the-icons-faicon "chevron-down" :v-adjust 0.1)
@@ -87,16 +106,17 @@
   ;; Icons for filetypes with Color
   (treemacs-define-custom-icon (all-the-icons-icon-for-file ".cs") "cs")
   (treemacs-define-custom-icon (all-the-icons-icon-for-file ".css") "css")
-  (treemacs-define-custom-icon (all-the-icons-icon-for-file ".git") "gitignore")
+  (treemacs-define-custom-icon (all-the-icons-icon-for-file ".git") "gitignore" "gitmodules" "gitconfig" "gitkeep")
   (treemacs-define-custom-icon (all-the-icons-icon-for-file ".html") "html" "htm")
   (treemacs-define-custom-icon (all-the-icons-icon-for-file ".java") "java")
   (treemacs-define-custom-icon (all-the-icons-icon-for-file ".js") "js")
   (treemacs-define-custom-icon (all-the-icons-icon-for-file ".ts") "ts")
-  (treemacs-define-custom-icon (all-the-icons-icon-for-file ".py") "py")
+  (treemacs-define-custom-icon (all-the-icons-icon-for-file ".py" :face 'all-the-icons-green) "py")
+  (treemacs-define-custom-icon (all-the-icons-icon-for-file ".py") "pyc")
   (treemacs-define-custom-icon (all-the-icons-icon-for-file ".rs") "rs")
   (treemacs-define-custom-icon (all-the-icons-icon-for-file ".hs") "hs")
-  (treemacs-define-custom-icon (all-the-icons-icon-for-file ".c") "c")
-  (treemacs-define-custom-icon (all-the-icons-icon-for-file ".cpp") "cpp" "C" "cc")
+  (treemacs-define-custom-icon (all-the-icons-icon-for-file ".c") "c" "h")
+  (treemacs-define-custom-icon (all-the-icons-icon-for-file ".cpp") "cpp" "C" "cc" "hpp")
   (treemacs-define-custom-icon (all-the-icons-icon-for-file ".rb") "rb")
   (treemacs-define-custom-icon (all-the-icons-icon-for-file ".scala") "scala")
   (treemacs-define-custom-icon (all-the-icons-icon-for-file ".ex") "ex")
@@ -117,8 +137,8 @@
   (treemacs-define-custom-icon (all-the-icons-icon-for-file ".zsh") "zsh")
   (treemacs-define-custom-icon (all-the-icons-icon-for-file ".jsx") "jsx")
   (treemacs-define-custom-icon (all-the-icons-icon-for-file ".vue") "vue")
-  (treemacs-define-custom-icon (all-the-icons-icon-for-file "Makefile") "Makefile")
-  (treemacs-define-custom-icon (all-the-icons-icon-for-file "Makefile.in") "Makefile")
+  (treemacs-define-custom-icon (all-the-icons-icon-for-file ".vim") "vim" "vimrc")
+  (treemacs-define-custom-icon (all-the-icons-icon-for-file "Makefile") "Makefile" "Makefile\.in")
   (treemacs-define-custom-icon (all-the-icons-icon-for-file "Dockerfile") "Dockerfile")
   ;; Icons with no color
   (treemacs-define-custom-icon (all-the-icons-fileicon "go") "go")
@@ -126,14 +146,13 @@
   (treemacs-define-custom-icon (all-the-icons-fileicon "kotlin") "kt" "kts")
   (treemacs-define-custom-icon (all-the-icons-fileicon "hy") "hy")
   (treemacs-define-custom-icon (all-the-icons-fileicon "typescript") "ts")
-  (treemacs-define-custom-icon (all-the-icons-fileicon "nimrod") "nim" "nims")
+  (treemacs-define-custom-icon (all-the-icons-fileicon "nimrod") "nim" "nims" "nimble")
   (treemacs-define-custom-icon (all-the-icons-fileicon "perl6") "pm6")
   (treemacs-define-custom-icon (all-the-icons-fileicon "tex") "tex")
   (treemacs-define-custom-icon (all-the-icons-fileicon "rst") "rst")
   (treemacs-define-custom-icon (all-the-icons-octicon "file-pdf") "pdf")
   (treemacs-define-custom-icon (all-the-icons-octicon "database") "sql")
   (treemacs-define-custom-icon (all-the-icons-material "style") "styles")
-
 
   (treemacs-define-custom-icon (all-the-icons-octicon "file-media")
                                "jpg" "jpeg" "png" "gif" "ico" "tif" "tiff" "svg" "bmp"
@@ -147,11 +166,17 @@
                                "conf" "cfg" "yaml" "yml" "json" "xml" "toml" "cson" "ini")
 
   (treemacs-define-custom-icon (all-the-icons-octicon "code")
-                               "tpl" "erb" "mustache" "twig" "ejs" "mk" "haml" "pug" "jade")
+                               "tpl" "erb" "mustache" "twig" "ejs" "mk" "haml" "pug" "jade" "cgi")
 
   (treemacs-define-custom-icon (all-the-icons-octicon "file-zip")
-                               "zip" "xz" "tar" "7z" "rar")
-  )
+                               "zip" "xz" "tar" "7z" "rar" "gz")
+
+  ;; treemacs に表示しない条件
+  (defun my-treemacs-ignore-func (filename absolute-path)
+    (or (string-suffix-p ".pyc" filename)
+        ;; (string-prefix-p "/x/y/z/" absolute-path))
+    )
+  (add-to-list 'treemacs-ignored-file-predicates #'my-treemacs-ignore-func))
 
 (def-package! beacon
   :custom

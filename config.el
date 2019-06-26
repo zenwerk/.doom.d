@@ -154,28 +154,45 @@
   (treemacs-define-custom-icon (all-the-icons-octicon "database") "sql")
   (treemacs-define-custom-icon (all-the-icons-material "style") "styles")
 
+  ;; メディアファイル
   (treemacs-define-custom-icon (all-the-icons-octicon "file-media")
                                "jpg" "jpeg" "png" "gif" "ico" "tif" "tiff" "svg" "bmp"
                                "psd" "ai" "eps" "indd" "mov" "avi" "mp4" "webm" "mkv"
                                "wav" "mp3" "ogg" "midi")
 
+  ;; READMEなどのテキストファイル
   (treemacs-define-custom-icon (all-the-icons-faicon "file-text-o")
                                "rst" "log" "txt" "CONTRIBUTE" "LICENSE" "README" "CHANGELOG")
 
+  ;; 設定ファイル系
   (treemacs-define-custom-icon (all-the-icons-faicon "cogs")
                                "conf" "cfg" "yaml" "yml" "json" "xml" "toml" "cson" "ini")
 
+  ;; テンプレート関連
   (treemacs-define-custom-icon (all-the-icons-octicon "code")
-                               "tpl" "erb" "mustache" "twig" "ejs" "mk" "haml" "pug" "jade" "cgi")
+                               "tpl" "erb" "mustache" "twig" "ejs" "mk" "haml" "pug" "jade")
 
+  ;; 圧縮ファイル
   (treemacs-define-custom-icon (all-the-icons-octicon "file-zip")
                                "zip" "xz" "tar" "7z" "rar" "gz")
+
+  ;; スクリプト実行ファイル
+  (treemacs-define-custom-icon (all-the-icons-alltheicon "script")
+                               "bat" "cgi")
+
+  ;; 何らかのコード
+  (treemacs-define-custom-icon (all-the-icons-faicon "code")
+                               "y" "l")
+
+  ;; その他
+  (treemacs-define-custom-icon treemacs-icon-fallback
+                               "hoge")
 
   ;; treemacs に表示しない条件
   (defun my-treemacs-ignore-func (filename absolute-path)
     (or (string-suffix-p ".pyc" filename)
         ;; (string-prefix-p "/x/y/z/" absolute-path))
-    )
+    ))
   (add-to-list 'treemacs-ignored-file-predicates #'my-treemacs-ignore-func))
 
 (def-package! beacon

@@ -13,6 +13,7 @@
  (:when (or IS-MAC (wslp))
    :map treemacs-mode-map "s-1" #'+treemacs/toggle)
  (:when (or IS-MAC (wslp))
+   :nvig "s-`" #'+eshell/toggle
    :nvi "s-w" #'my-kill-current-buffer
    :nvi "s-1" #'+treemacs/toggle
    :nvi "s-v" #'yank-pop
@@ -24,14 +25,32 @@
 (map! :map minibuffer-local-completion-map
       "C-w" #'backward-kill-word)
 
-;; (map! :map eshell-mode-map
-;;       "s-`" #'+workspace/close-window-or-workspace)
-
-;; iflipb でバッファの切り替え
-;; (map! :nmvoig [C-tab] #'iflipb-next-buffer
-;;       :nmvoig [C-S-tab] #'iflipb-previous-buffer)
+(defun my-eshell-key-map ()
+  "Setup eshell keybindings. This must be done in a hook because eshell-mode
+redefines its keys every time `eshell-mode' is enabled."
+  (map! :map eshell-mode-map
+        (:e "C-h" "<DEL>"
+            "s-`" #'+eshell/toggle
+            "C-p" #'eshell-previous-matching-input-from-input
+            "C-n" #'eshell-next-matching-input-from-input
+            "C-r" #'+eshell/search-history
+            "TAB" #'+eshell/pcomplete
+            [tab] #'+eshell/pcomplete
+            "C-w C-w" #'other-window
+            "C-w h" #'evil-window-left
+            "C-w j" #'evil-window-down
+            "C-w l" #'evil-window-right
+            "C-w j" #'evil-window-up)
+        (:when (or IS-MAC (wslp))
+          :e "s-w" #'+eshell/kill-and-close)))
+(add-hook 'eshell-first-time-mode-hook #'my-eshell-key-map)
 
 (map!
+ ;; (:after eshell-toggle
+ ;;   (:nvig "s-`" #'eshell-toggle))
+ ;; (:after iflibp
+ ;;   (:nmvoig [C-tab] #'iflipb-next-buffer
+ ;;            [C-S-tab] #'iflipb-previous-buffer))
  (:after jumplist
    (:g "C-<" #'jumplist-previous
        "C->" #'jumplist-next))
@@ -40,8 +59,6 @@
          "C-c l" #'evilnc-quick-comment-or-uncomment-to-the-line
          "C-c c" #'evilnc-copy-and-comment-lines
          "C-c p" #'evilnc-comment-or-uncomment-paragraphs))
- (:after eshell-toggle
-   (:nvig "s-`" #'eshell-toggle))
  (:after company
    (:map company-active-map
      "TAB" #'company-complete-selection

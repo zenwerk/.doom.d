@@ -1,7 +1,8 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here
-(setq doom-scratch-buffer-major-mode 'lisp-interaction-mode)
+(add-hook 'doom-scratch-buffer-hook
+          '(lambda () (lisp-interaction-mode)))
 
 ;; Highlight trailing whitespace
 (setq-default show-trailing-whitespace t)
@@ -16,15 +17,11 @@
 (setq-default truncate-lines nil)
 (global-visual-line-mode t)
 
-;; (def-package! kaolin-themes
-;;   :config
-;;   (load-theme 'kaolin-ocean t)
-;;   (kaolin-treemacs-theme))
 
 (def-package! base16-theme
   :config
-  (load-theme 'base16-phd t)
-  )
+  (load-theme 'base16-phd t))
+
 
 ;; モジュールの設定
 (after! evil
@@ -42,13 +39,17 @@
   (evil-swap-key evil-motion-state-map "j" "gj")
   (evil-swap-key evil-motion-state-map "k" "gk"))
 
+
+(after! eshell
+  (setq-default show-trailing-whitespace nil))
+
+
 (after! company
   (setq company-idle-delay 0.1
         company-minimum-prefix-length 2
-        company-show-numbers nil
         ;; company-dabbrev-downcase nil
         ;; company-dabbrev-ignore-case t
-        )
+        company-show-numbers nil)
   ; fuzzy matching for company
   (company-flx-mode 1))
 
@@ -234,6 +235,7 @@
      (string-prefix-p "*Compile-Log*" name)
      (string-prefix-p "*lsp" name)
      (string-prefix-p "*doom*" name)
+     (string-prefix-p "*doom:eshell" name)
      (string-prefix-p "*et:" name) ; for eshell-toggle
      ;; (string-prefix-p "*Messages*" name)
 
@@ -259,7 +261,7 @@
 (def-package! eshell-toggle
   :custom
   ;; (eshell-toggle-window-side 'right)
-  (eshell-toggle-init-function #'eshell-toggle-init-ansi-term)
+  (eshell-toggle-init-function #'eshell-toggle-init-eshell)
   (eshell-toggle-use-projectile-root t)
   (eshell-toggle-size-fraction 2))
 

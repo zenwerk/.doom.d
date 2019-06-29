@@ -173,6 +173,10 @@
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
+(defun wslp ()
+  (and (eq system-type 'gnu/linux)
+       (file-exists-p "/proc/sys/fs/binfmt_misc/WSLInterop")))
+
 ;; NTEmacs 向けの exec-path 対応
 (when (eq system-type 'windows-nt)
   (let ((home (getenv "HOME")))

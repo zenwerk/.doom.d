@@ -26,3 +26,9 @@
 ;; (package! doom-themes :disable t)
 (package! base16-theme)
 (package! kaolin-themes)
+
+(when (wslp)
+  (package! mozc)
+  (package! mozc-im)
+  (package! mozc-popup)
+  (package! mozc-el-extensions :recipe (:fetcher github :repo "iRi-E/mozc-el-extensions" :file "mozc-cursor-color.el")))

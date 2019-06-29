@@ -266,9 +266,6 @@
   (eshell-toggle-size-fraction 2))
 
 ;; load windows settings
-(defun wslp ()
-  (and (eq system-type 'gnu/linux)
-       (file-exists-p "/proc/sys/fs/binfmt_misc/WSLInterop")))
 (when (or (eq system-type 'windows-nt)
           (wslp))
   (load! "+windows"))

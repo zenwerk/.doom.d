@@ -16,6 +16,8 @@
 
 (package! eshell-toggle :recipe (:fetcher github :repo "4DA/eshell-toggle"))
 
+(package! bison-mode :recipe (:fetcher github :repo "Wilfred/bison-mode"))
+
 ;; buffer move
 ;; (package! iflipb :recipe (:fetcher github :repo "jrosdahl/iflipb"))
 (package! awesome-tab :recipe (:fetcher github :repo "manateelazycat/awesome-tab"))

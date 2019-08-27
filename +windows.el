@@ -119,4 +119,13 @@
   (setq mozc-helper-program-name "mozc_emacs_helper.sh"))
 
 
+;; for Windows font
+;; ref. http://www.aise.ics.saitama-u.ac.jp/~gotoh/EmacsUbuntu1804onWSL.html
+(let ((font "ＭＳ ゴシック"))
+  (setq doom-font (font-spec :family font :size 16)
+        doom-variable-pitch-font (font-spec :family font)
+        doom-unicode-font (font-spec :family font)
+        doom-big-font (font-spec :family font :size 22)))
+
+
 (message "loaded Windows specific configulation.")

@@ -3,4 +3,4 @@
 
 (package! google-c-style)
 
-(package! cmake-project :recipe (:fetcher github :repo "xhcoding/cmake-project"))
+(package! cmake-project :recipe (:host github :repo "xhcoding/cmake-project"))

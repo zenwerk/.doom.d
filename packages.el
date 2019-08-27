@@ -14,13 +14,13 @@
 
 (package! which-key-posframe)
 
-(package! eshell-toggle :recipe (:fetcher github :repo "4DA/eshell-toggle"))
+(package! eshell-toggle :recipe (:host github :repo "4DA/eshell-toggle"))
 
-(package! bison-mode :recipe (:fetcher github :repo "Wilfred/bison-mode"))
+(package! bison-mode :recipe (:host github :repo "Wilfred/bison-mode"))
 
 ;; buffer move
-;; (package! iflipb :recipe (:fetcher github :repo "jrosdahl/iflipb"))
-(package! awesome-tab :recipe (:fetcher github :repo "manateelazycat/awesome-tab"))
+;; (package! iflipb :recipe (:host github :repo "jrosdahl/iflipb"))
+(package! awesome-tab :recipe (:host github :repo "manateelazycat/awesome-tab"))
 (package! beacon)
 (package! jumplist)
 
@@ -33,4 +33,4 @@
   (package! mozc)
   (package! mozc-im)
   (package! mozc-popup)
-  (package! mozc-el-extensions :recipe (:fetcher github :repo "iRi-E/mozc-el-extensions" :file "mozc-cursor-color.el")))
+  (package! mozc-el-extensions :recipe (:host github :repo "iRi-E/mozc-el-extensions" :file "mozc-cursor-color.el")))

@@ -3,5 +3,5 @@
 
 (package! posframe)
 (package! ivy-posframe)
-(package! hydra-posframe :recipe (:fetcher github :repo "Ladicle/hydra-posframe"))
-(package! flymake-posframe :recipe (:fetcher github :repo "Ladicle/flymake-posframe"))
+(package! hydra-posframe :recipe (:host github :repo "Ladicle/hydra-posframe"))
+(package! flymake-posframe :recipe (:host github :repo "Ladicle/flymake-posframe"))

@@ -168,7 +168,7 @@
        :private
        posframe
        ;lsp
-       my-cc
+       ;my-cc
        )
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))

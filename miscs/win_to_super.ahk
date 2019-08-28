@@ -14,5 +14,8 @@ KeyWait, LAlt
 Return
 ;; 押しっぱなしのときに連続入力しない
 LAlt Up::Return
+;; LAlt+Tab は Windows の機能を呼び出す
+Tab::!Tab
+Return
 
 #IfWinActive
